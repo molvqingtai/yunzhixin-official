@@ -3,12 +3,31 @@ module.exports = {
     browser: true,
     es2021: true
   },
-  extends: ['standard', 'prettier', 'prettier/standard'],
+  extends: [
+    'plugin:react/recommended',
+    'standard',
+    'standard-with-typescript',
+    'prettier',
+    'prettier/react',
+    'prettier/standard',
+    'prettier/prettier',
+    'prettier/@typescript-eslint'
+  ],
+  parser: '@typescript-eslint/parser',
   parserOptions: {
+    project: './tsconfig.json',
+    ecmaFeatures: {
+      jsx: true
+    },
     ecmaVersion: 12,
     sourceType: 'module'
   },
-  plugins: ['prettier'],
+  settings: {
+    react: {
+      version: 'detect'
+    }
+  },
+  plugins: ['react', '@typescript-eslint', 'prettier'],
   rules: {
     'prettier/prettier': 'error'
   }
