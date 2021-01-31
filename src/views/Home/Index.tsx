@@ -1,10 +1,13 @@
 import React, { FC } from 'react'
 
+import Layout from '../../components/Layout/Index'
+import Navigation from './components/Navigation'
+
 const Index: FC = () => {
   return (
-    <div>
-      <h1>home</h1>
-    </div>
+    <Layout>
+      <Navigation></Navigation>
+    </Layout>
   )
 }
 
