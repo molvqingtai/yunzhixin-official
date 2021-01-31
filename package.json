@@ -1,0 +1,39 @@
+{
+  "name": "yunzhixin-official",
+  "version": "1.0.0",
+  "description": "云之信官网",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel src/index.html",
+    "build": "parcel build src/index.html",
+    "lint": "eslint . --ext .js --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/molvqingtai/yunzhixin-official.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/molvqingtai/yunzhixin-official/issues"
+  },
+  "homepage": "https://github.com/molvqingtai/yunzhixin-official#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.2.4",
+    "eslint": "^7.18.0",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-vue": "^7.5.0",
+    "parcel": "^2.0.0-nightly.558",
+    "postcss-import": "^14.0.0",
+    "prettier": "^2.2.1"
+  },
+  "dependencies": {
+    "tailwindcss": "^2.0.2"
+  }
+}
