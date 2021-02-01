@@ -5,11 +5,7 @@ interface Props {
 }
 
 const Layout: FC<Props> = ({ children }: Props) => {
-  return (
-    <div className="w-screen min-h-screen flex flex-col bg-green-200">
-      {children}
-    </div>
-  )
+  return <div className="w-screen min-h-screen flex flex-col">{children}</div>
 }
 
 export default Layout
