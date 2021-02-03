@@ -1,5 +1,9 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useState, forwardRef, useEffect, useRef } from 'react'
 
+const ShadowButton = forwardRef<HTMLButtonElement>((props, ref) => {
+  return <button {...props} ref={ref}></button>
+})
+ShadowButton.displayName = 'ShadowButton'
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: string
   isActive: boolean
@@ -8,12 +12,12 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 const Button: FC<ButtonProps> = ({
   children,
   isActive,
-  ...rest
+  ...props
 }: ButtonProps) => {
   const activeClass = isActive ? 'bg-theme' : ''
   return (
     <button
-      {...rest}
+      {...props}
       className={`py-1 px-5 rounded-full cursor-pointer focus:outline-none text-white border-2 border-transparent hover:border-theme ${activeClass}`}
     >
       {children}
@@ -21,13 +25,18 @@ const Button: FC<ButtonProps> = ({
   )
 }
 
-// const ButtonShadow: FC = () => {}
-
-const Navigation: FC = () => {
-  const buttonTextList = ['产品', '案例', '关于我们']
+interface NavigationProps extends React.HTMLAttributes<HTMLDivElement> {
+  menu: string[]
+}
+const Navigation: FC<NavigationProps> = ({ menu }: NavigationProps) => {
   const [activeIndex, setActiveIndex] = useState(0)
+  const shadowButtonRef = useRef(null)
 
   const handleClick = (index: number): void => setActiveIndex(index)
+
+  useEffect(() => {
+    console.log(shadowButtonRef)
+  })
 
   return (
     <div
@@ -37,7 +46,8 @@ const Navigation: FC = () => {
       <div className="container mx-auto h-full flex items-center">
         <div className="text-white">云之信</div>
         <div className="flex flex-1 justify-around">
-          {buttonTextList.map((text, index) => (
+          <ShadowButton ref={shadowButtonRef}></ShadowButton>
+          {menu.map((text, index) => (
             <Button
               isActive={activeIndex === index}
               onClick={() => handleClick(index)}
