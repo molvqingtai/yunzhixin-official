@@ -8,10 +8,10 @@ module.exports = {
     'standard',
     'standard-with-typescript',
     'prettier',
-    'prettier/react',
+    'prettier/prettier',
     'prettier/standard',
     'prettier/@typescript-eslint',
-    'prettier/prettier'
+    'prettier/react'
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -29,6 +29,7 @@ module.exports = {
   },
   plugins: ['react', '@typescript-eslint', 'prettier'],
   rules: {
-    'prettier/prettier': 'error'
+    'prettier/prettier': 'error',
+    '@typescript-eslint/no-non-null-assertion': 'off'
   }
 }

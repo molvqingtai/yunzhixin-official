@@ -23,7 +23,7 @@ const Banner: FC<BannerProps> = ({ src, children }: BannerProps) => {
 const Index: FC = () => {
   return (
     <Layout>
-      <Navigation menu={['产品', '案例', '关于我们']}></Navigation>
+      <Navigation menus={['产品', '案例', '关于我们']}></Navigation>
       <Banner src={BannerImage1}></Banner>
     </Layout>
   )
