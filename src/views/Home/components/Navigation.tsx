@@ -1,4 +1,11 @@
-import React, { FC, useState, forwardRef, HTMLProps } from 'react'
+import React, {
+  FC,
+  useState,
+  forwardRef,
+  HTMLProps,
+  useRef,
+  useEffect
+} from 'react'
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (props: ButtonProps, ref) => {
@@ -30,24 +37,13 @@ interface NavigationProps extends HTMLProps<HTMLDivElement> {
   menus: string[]
 }
 const Navigation: FC<NavigationProps> = ({ menus }: NavigationProps) => {
-  const [activeButtonIndex, setActiveButtonIndex] = useState()
-  // const [activeButtonSize, setActiveButtonSize] = useState({
-  //   width: 0,
-  //   height: 0
-  // })
-
-  const [buttonRefs, setButtonRefs] = useState<HTMLButtonElement[]>([])
+  const [activeButtonIndex, setActiveButtonIndex] = useState(0)
+  const buttonRefs = useRef<HTMLButtonElement[]>([])
   const handleClick = (index: number): void => setActiveButtonIndex(index)
 
-  // useEffect(() => {
-  //   const {
-  //     offsetWidth: width,
-  //     offsetHeight: height
-  //   } = activeButtonRef.current!
-
-  //   setActiveButtonSize({ width, height })
-  //   console.log(width, height)
-  // }, [activeButtonRef])
+  useEffect(() => {
+    console.log(buttonRefs)
+  }, [])
 
   return (
     <div
@@ -61,7 +57,7 @@ const Navigation: FC<NavigationProps> = ({ menus }: NavigationProps) => {
           {menus.map((text, index) => (
             <Button
               ref={(ref: HTMLButtonElement) =>
-                setButtonRefs([...buttonRefs, ref])
+                (buttonRefs.current[index] = ref)
               }
               isActive={activeButtonIndex === index}
               onClick={() => handleClick(index)}
