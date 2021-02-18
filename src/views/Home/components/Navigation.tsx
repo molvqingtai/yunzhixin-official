@@ -1,5 +1,4 @@
 import React, {
-  FC,
   useState,
   forwardRef,
   HTMLProps,
@@ -17,11 +16,9 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         ref={ref}
         onClick={onClick}
-        className="focus:outline-none relative"
+        className="relative transition ease-out duration-300 flex py-1 px-5 rounded-full focus:outline-none text-white border-2 border-transparent hover:border-theme"
       >
-        <span className="transition ease-out duration-300 flex py-1 px-5 rounded-full focus:outline-none text-white border-2 border-transparent hover:border-theme">
-          {children}
-        </span>
+        {children}
       </button>
     )
   }
@@ -31,7 +28,7 @@ Button.displayName = 'Button'
 interface ShadowButtonProps extends HTMLProps<HTMLButtonElement> {
   rect: ClientRect
 }
-const ShadowButton: FC<ShadowButtonProps> = ({ rect }: ShadowButtonProps) => {
+const ShadowButton = ({ rect }: ShadowButtonProps): JSX.Element => {
   const { width, height, top, left } = rect
   return (
     <button
@@ -46,7 +43,7 @@ interface NavigationProps extends HTMLProps<HTMLDivElement> {
   menus: string[]
 }
 
-const Navigation: FC<NavigationProps> = ({ menus }: NavigationProps) => {
+const Navigation = ({ menus }: NavigationProps): JSX.Element => {
   const [activeButtonIndex, setActiveButtonIndex] = useState(0)
   const [activeButtonRect, setActiveButtonRect] = useState({})
   const buttonRefs = useRef<HTMLButtonElement[]>([])
