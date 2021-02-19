@@ -1,10 +1,10 @@
-import React, { FC } from 'react'
+import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import Home from './views/Home/Index'
 import Notfound from './views/404/Index'
 
-const App: FC = () => {
+const App = (): JSX.Element => {
   return (
     <Router>
       <Switch>

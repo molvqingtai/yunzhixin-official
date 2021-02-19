@@ -1,12 +1,12 @@
 import React, {
   useState,
   forwardRef,
-  HTMLProps,
+  HTMLAttributes,
   useRef,
   useEffect
 } from 'react'
 
-interface ButtonProps extends HTMLProps<HTMLButtonElement> {
+interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   children: string
 }
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -25,7 +25,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 )
 Button.displayName = 'Button'
 
-interface ShadowButtonProps extends HTMLProps<HTMLButtonElement> {
+interface ShadowButtonProps extends HTMLAttributes<HTMLButtonElement> {
   rect: ClientRect
 }
 const ShadowButton = ({ rect }: ShadowButtonProps): JSX.Element => {
@@ -39,7 +39,7 @@ const ShadowButton = ({ rect }: ShadowButtonProps): JSX.Element => {
 }
 ShadowButton.displayName = 'ShadowButton'
 
-interface NavigationProps extends HTMLProps<HTMLDivElement> {
+interface NavigationProps extends HTMLAttributes<HTMLDivElement> {
   menus: string[]
 }
 
