@@ -6,6 +6,8 @@ import React, {
   useEffect
 } from 'react'
 
+import { ReactComponent as Logo } from '../../../assets/images/logo.svg'
+
 interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   children: string
 }
@@ -32,8 +34,8 @@ const ShadowButton = ({ rect }: ShadowButtonProps): JSX.Element => {
   const { width, height, top, left } = rect
   return (
     <button
-      style={{ width, height, top, left }}
-      className="fixed transition-all ease-out duration-700 py-1 px-5 rounded-full cursor-pointer focus:outline-none text-white border-2 border-transparent  bg-theme"
+      style={{ width, height, top, left, backdropFilter: 'blur(10px)' }}
+      className="fixed transition-all ease-out duration-700 py-1 px-5 rounded-full cursor-pointer focus:outline-none text-white border-2 border-transparent  bg-theme bg-opacity-50"
     ></button>
   )
 }
@@ -58,24 +60,28 @@ const Navigation = ({ menus }: NavigationProps): JSX.Element => {
 
   return (
     <div
-      className="bg-theme bg-opacity-30 h-14 z-10 fixed top-0 w-screen"
+      className="bg-theme bg-opacity-30 h-14 z-50 fixed top-0 w-screen"
       style={{ backdropFilter: 'blur(5px) ' }}
     >
       <div className="container mx-auto h-full flex items-center">
-        <div className="text-white">云之信</div>
-        <div className="flex flex-1 justify-around">
-          <ShadowButton rect={activeButtonRect as ClientRect}></ShadowButton>
-          {menus.map((text, index) => (
-            <Button
-              ref={(ref: HTMLButtonElement) =>
-                (buttonRefs.current[index] = ref)
-              }
-              onClick={() => handleClick(index)}
-              key={index}
-            >
-              {text}
-            </Button>
-          ))}
+        <div className="text-white">
+          <Logo className="w-10"></Logo>
+        </div>
+        <div className="flex flex-1 justify-center">
+          <div className="max-w-5xl w-full flex justify-around">
+            <ShadowButton rect={activeButtonRect as ClientRect}></ShadowButton>
+            {menus.map((text, index) => (
+              <Button
+                ref={(ref: HTMLButtonElement) =>
+                  (buttonRefs.current[index] = ref)
+                }
+                onClick={() => handleClick(index)}
+                key={index}
+              >
+                {text}
+              </Button>
+            ))}
+          </div>
         </div>
       </div>
     </div>

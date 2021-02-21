@@ -13,8 +13,9 @@ const FloorView = ({
 }: FloorViewProps): JSX.Element => {
   return (
     <div
-      className={`w-screen h-screen bg-cover ${className}`}
+      className={`min-w-screen min-h-screen bg-cover ${className}`}
       style={{
+        // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
         backgroundImage: image ? `url(${image})` : 'none',
         ...style
       }}

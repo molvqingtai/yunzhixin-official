@@ -2,20 +2,28 @@ import React from 'react'
 import Layout from '../../components/Layout/Index'
 import Navigation from './components/Navigation'
 import FloorView from './components/FloorView'
+import DefectSwiper from './components/DefectSwiper'
+import FeatureSwiper from './components/FeatureSwiper'
 
-import BannerImage1 from '../../assets/images/01.jpg'
-import BannerImage2 from '../../assets/images/02.jpg'
+import FloorImage1 from '../../assets/images/01.jpg'
+import FloorImage2 from '../../assets/images/02.jpg'
+import FloorImage3 from '../../assets/images/03.jpg'
+import FileImage from '../../assets/images/file.png'
+import Product1 from '../../assets/images/product-01.png'
+import Logo2 from '../../assets/images/logo-02.png'
+
+import { ReactComponent as Feature } from '../../assets/images/feature.svg'
 
 const Index = (): JSX.Element => {
   return (
     <Layout>
       <Navigation menus={['我们的产品', '客户案例', '关于我们']}></Navigation>
-      <FloorView image={BannerImage1}></FloorView>
+      <FloorView image={FloorImage1}></FloorView>
       <FloorView
-        image={BannerImage2}
+        image={FloorImage2}
         className="flex justify-center items-center"
       >
-        <div className="max-w-3xl text-white">
+        <div className="max-w-3xl w-full text-white">
           <div className="flex justify-between mb-12 items-center text-4xl">
             <h1>成都制造</h1>
             <span className="h-8 w-1 bg-white"></span>
@@ -49,16 +57,77 @@ const Index = (): JSX.Element => {
           </div>
         </div>
       </FloorView>
-      <FloorView className="flex flex-col">
-        <div className="flex flex-col flex-1 items-center justify-center bg-gray-200">
-          <div>
-            <h1 className="text-gray-700 text-4xl">
-              餐厨垃圾现有处理方式存在 <strong className="text-5xl">6</strong>{' '}
+      <FloorView className="flex flex-col bg-red-900">
+        <div className="flex flex-col flex-1 items-center justify-around pt-12">
+          <div className="mb-10">
+            <h1 className="text-white text-4xl">
+              餐厨垃圾现有处理方式存在 <strong className="text-5xl">6</strong>
               大缺陷
             </h1>
           </div>
-          <div className="shadow-md max-w-3xl flex-1"></div>
+          <DefectSwiper></DefectSwiper>
         </div>
+        <div className="w-full flex-1 flex">
+          <div className="flex-1 flex items-center justify-end">
+            <img className="w-8/12" src={FileImage} />
+          </div>
+          <div className="text-white flex-1 flex justify-center items-center">
+            <div className="flex flex-col items-baseline">
+              <div className="leading-9 mb-4">
+                <h1 className="text-3xl mb-6">政府目标</h1>
+                <p>执行生活垃圾分类制度，实现城市金细化管理</p>
+                <p>厨余垃圾分布式处理，就地处置，禁止转运</p>
+                <p>2020~2022 三年按规划完善 5+2 城区的餐厨垃圾处置设配</p>
+              </div>
+              <div className="flex flex-col items-baseline"></div>
+              <a
+                href="#"
+                className="px-2 py-1 bg-white text-red-900 rounded-md mb-3 hover:underline"
+              >
+                《成都市生活垃圾管理规范》
+              </a>
+              <a
+                href="#"
+                className="px-2 py-1 bg-white text-red-900 rounded-md hover:underline"
+              >
+                《成都市厨余垃圾分布式处理工作方案》
+              </a>
+            </div>
+          </div>
+        </div>
+      </FloorView>
+      <FloorView className="flex flex-col items-center justify-center">
+        <div className="max-w-3xl w-full flex justify-between items-center text-4xl mb-20">
+          <h1 className="text-gray-600">成都制造</h1>
+          <span className="h-8 w-1 bg-gray-600"></span>
+          <h1 className="text-gray-600">专利产权</h1>
+          <span className="h-8 w-1 bg-gray-600"></span>
+          <h1 className="text-gray-600">高端服务</h1>
+          <span className="h-8 w-1 bg-gray-600"></span>
+          <h1 className="text-gray-600">性价比高</h1>
+        </div>
+        <div className="flex">
+          <div className="flex-1 flex items-center justify-center">
+            <img className="w-10/12" src={Product1} />
+          </div>
+          <div className="flex-1 flex items-center justify-center">
+            <FeatureSwiper></FeatureSwiper>
+          </div>
+        </div>
+      </FloorView>
+      <FloorView className="flex flex-col items-center justify-center">
+        <div className="text-4xl text-gray-600 mb-12">
+          <h1>特色功能</h1>
+        </div>
+        <div className="w-full flex items-center justify-center">
+          <Feature className="max-w-6xl w-full"></Feature>
+        </div>
+      </FloorView>
+      <FloorView
+        image={FloorImage3}
+        className="flex justify-center items-center"
+      >
+        <img className="w-10/12" src={Logo2} alt="logo" />
       </FloorView>
     </Layout>
   )

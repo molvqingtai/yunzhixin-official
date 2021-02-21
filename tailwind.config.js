@@ -6,6 +6,9 @@ module.exports = {
       colors: {
         theme: '#6F83AC',
         minor: '#3B4D76'
+      },
+      backgroundSize: {
+        '15%': '15%'
       }
     }
   },
