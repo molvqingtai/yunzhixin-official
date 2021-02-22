@@ -4,6 +4,8 @@ import Navigation from './components/Navigation'
 import FloorView from './components/FloorView'
 import DefectSwiper from './components/DefectSwiper'
 import FeatureSwiper from './components/FeatureSwiper'
+import ServiceCards from './components/ServiceCards'
+import CaseMap from './components/CaseMap'
 
 import FloorImage1 from '../../assets/images/01.jpg'
 import FloorImage2 from '../../assets/images/02.jpg'
@@ -12,7 +14,8 @@ import FileImage from '../../assets/images/file.png'
 import Product1 from '../../assets/images/product-01.png'
 import Logo2 from '../../assets/images/logo-02.png'
 
-import { ReactComponent as Feature } from '../../assets/images/feature.svg'
+import { ReactComponent as FeatureSvg } from '../../assets/images/feature.svg'
+import { ReactComponent as AdvantageSvg } from '../../assets/images/advantage.svg'
 
 const Index = (): JSX.Element => {
   return (
@@ -120,7 +123,36 @@ const Index = (): JSX.Element => {
           <h1>特色功能</h1>
         </div>
         <div className="w-full flex items-center justify-center">
-          <Feature className="max-w-6xl w-full"></Feature>
+          <FeatureSvg className="max-w-6xl w-full"></FeatureSvg>
+        </div>
+      </FloorView>
+      <FloorView className="flex flex-col justify-center items-center bg-theme bg-opacity-10">
+        <div className="text-4xl text-gray-600 mb-12">
+          <h1>分布式、全流程、一体化解决方案</h1>
+        </div>
+        <ServiceCards></ServiceCards>
+      </FloorView>
+      <FloorView className="flex flex-col items-center justify-center">
+        <div className="text-4xl text-gray-600 mb-12">
+          <h1>方案优势</h1>
+        </div>
+        <div className="flex">
+          <div className="flex-1 w-full flex items-center justify-center">
+            <AdvantageSvg className="w-8/12"></AdvantageSvg>
+          </div>
+          <div className="flex-1 flex items-center justify-center">
+            <h1 className="text-3xl w-7/12 leading-relaxed">
+              在垃圾分类中，厨余垃圾是污染最重、最不好分类和处置的。解决好厨余垃圾的分类和处置，就抓住了生活垃圾分类和处置工作的关键。
+            </h1>
+          </div>
+        </div>
+      </FloorView>
+      <FloorView>
+        <div className="text-4xl text-gray-600 mb-12">
+          <h1>案例展示</h1>
+        </div>
+        <div>
+          <CaseMap></CaseMap>
         </div>
       </FloorView>
       <FloorView
