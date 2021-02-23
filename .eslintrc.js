@@ -6,12 +6,12 @@ module.exports = {
   extends: [
     'plugin:react/recommended',
     'standard',
-    'prettier',
     'standard-with-typescript',
     'prettier/prettier',
     'prettier/standard',
     'prettier/@typescript-eslint',
-    'prettier/react'
+    'prettier/react',
+    'prettier'
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -30,6 +30,7 @@ module.exports = {
   plugins: ['react', '@typescript-eslint', 'prettier'],
   rules: {
     'prettier/prettier': 'error',
-    '@typescript-eslint/no-non-null-assertion': 'off'
+    '@typescript-eslint/no-non-null-assertion': 'off',
+    'no-void': ['error', { allowAsStatement: true }]
   }
 }

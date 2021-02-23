@@ -1,12 +1,10 @@
-import React from 'react'
-import Layout from '../../components/Layout/Index'
+import React, { useState, useEffect } from 'react'
 import Navigation from './components/Navigation'
 import FloorView from './components/FloorView'
 import DefectSwiper from './components/DefectSwiper'
 import FeatureSwiper from './components/FeatureSwiper'
 import ServiceCards from './components/ServiceCards'
 import CaseMap from './components/CaseMap'
-
 import FloorImage1 from '../../assets/images/01.jpg'
 import FloorImage2 from '../../assets/images/02.jpg'
 import FloorImage3 from '../../assets/images/03.jpg'
@@ -17,9 +15,35 @@ import Logo2 from '../../assets/images/logo-02.png'
 import { ReactComponent as FeatureSvg } from '../../assets/images/feature.svg'
 import { ReactComponent as AdvantageSvg } from '../../assets/images/advantage.svg'
 
+import useImport from '../../hooks/useImport'
+
 const Index = (): JSX.Element => {
+  const patentImages = useImport(
+    [...Array(6)].map(
+      (_, index) => `../../assets/images/patent/patent-0${index + 1}.jpg`
+    )
+  )
+  console.log(patentImages)
+
+  useEffect(() => {
+    Promise.all(
+      [...Array(6)].map(async (_, index) => {
+        const Module = await import(
+          `../../assets/images/patent/patent-0${index}.jpg`
+        )
+        console.log(Module)
+
+        return Module.default
+      })
+    )
+      .then((res) => setPatentImages(res))
+      .catch((err) => {
+        console.log(err.message)
+      })
+  }, [])
+
   return (
-    <Layout>
+    <div className="w-screen min-h-screen flex flex-col">
       <Navigation menus={['我们的产品', '客户案例', '关于我们']}></Navigation>
       <FloorView image={FloorImage1}></FloorView>
       <FloorView
@@ -147,12 +171,15 @@ const Index = (): JSX.Element => {
           </div>
         </div>
       </FloorView>
-      <FloorView>
+      <FloorView className="flex flex-col items-center justify-center">
         <div className="text-4xl text-gray-600 mb-12">
           <h1>案例展示</h1>
         </div>
-        <div>
-          <CaseMap></CaseMap>
+        <CaseMap></CaseMap>
+      </FloorView>
+      <FloorView>
+        <div className="grid grid-cols-6 gap-4">
+          <img src={patentImages[0]} alt="" />
         </div>
       </FloorView>
       <FloorView
@@ -161,7 +188,7 @@ const Index = (): JSX.Element => {
       >
         <img className="w-10/12" src={Logo2} alt="logo" />
       </FloorView>
-    </Layout>
+    </div>
   )
 }
 
