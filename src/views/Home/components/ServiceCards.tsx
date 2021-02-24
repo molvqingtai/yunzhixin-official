@@ -7,7 +7,7 @@ interface CardProps {
   index: number
 }
 const Card = ({ title, color, desc, index }: CardProps): JSX.Element => (
-  <div className="flex-1 relative rounded-2xl shadow-xl px-4 pt-20 pb-4 mx-2">
+  <div className="flex-1 relative rounded-2xl shadow-xl px-4 pt-20 pb-4 mx-2 bg-white">
     <div
       className="flex justify-around text-white z-10 text-center py-2 rounded-r-3xl absolute left-0 top-6 px-3"
       style={{ backgroundColor: color }}

@@ -15,12 +15,9 @@ const Index = (): JSX.Element => {
     <div className="w-screen min-h-screen flex flex-col">
       <Navigation menus={['我们的产品', '客户案例', '关于我们']}></Navigation>
       <FloorView image="/src/assets/images/01.jpg"></FloorView>
-      <FloorView
-        image="/src/assets/images/01.jpg"
-        className="flex justify-center items-center"
-      >
-        <div className="max-w-3xl w-full text-white">
-          <div className="flex justify-between mb-12 items-center text-4xl">
+      <FloorView image="/src/assets/images/02.jpg" className="flex">
+        <div className="flex flex-col justify-center items-center text-white m-auto">
+          <div className="w-full max-w-3xl flex justify-between mb-12 items-center text-4xl">
             <h1>成都制造</h1>
             <span className="h-8 w-1 bg-white"></span>
             <h1>专利产权</h1>
@@ -53,7 +50,7 @@ const Index = (): JSX.Element => {
           </div>
         </div>
       </FloorView>
-      <FloorView className="flex flex-col bg-red-900">
+      <FloorView color="#7F1D1D">
         <div className="flex flex-col flex-1 items-center justify-around pt-12">
           <div className="mb-10">
             <h1 className="text-white text-4xl">
@@ -64,7 +61,7 @@ const Index = (): JSX.Element => {
           <DefectSwiper></DefectSwiper>
         </div>
         <div className="w-full flex-1 flex">
-          <div className="flex-1 flex items-center justify-end">
+          <div className="flex-1 flex items-center justify-center">
             <img className="w-8/12" src="/src/assets/images/file.png" />
           </div>
           <div className="text-white flex-1 flex justify-center items-center">
@@ -92,40 +89,48 @@ const Index = (): JSX.Element => {
           </div>
         </div>
       </FloorView>
-      <FloorView className="flex flex-col items-center justify-center">
-        <div className="max-w-3xl w-full flex justify-between items-center text-4xl mb-20">
-          <h1 className="text-gray-600">成都制造</h1>
-          <span className="h-8 w-1 bg-gray-600"></span>
-          <h1 className="text-gray-600">专利产权</h1>
-          <span className="h-8 w-1 bg-gray-600"></span>
-          <h1 className="text-gray-600">高端服务</h1>
-          <span className="h-8 w-1 bg-gray-600"></span>
-          <h1 className="text-gray-600">性价比高</h1>
-        </div>
-        <div className="flex">
-          <div className="flex-1 flex items-center justify-center">
-            <img className="w-10/12" src="/src/assets/images/product-01.png" />
+      <FloorView className="flex">
+        <div className="flex flex-col justify-center items-center pt-12">
+          <div className="max-w-3xl w-full flex justify-between items-center text-4xl mb-20">
+            <h1 className="text-gray-600">成都制造</h1>
+            <span className="h-8 w-1 bg-gray-600"></span>
+            <h1 className="text-gray-600">专利产权</h1>
+            <span className="h-8 w-1 bg-gray-600"></span>
+            <h1 className="text-gray-600">高端服务</h1>
+            <span className="h-8 w-1 bg-gray-600"></span>
+            <h1 className="text-gray-600">性价比高</h1>
           </div>
-          <div className="flex-1 flex items-center justify-center">
-            <FeatureSwiper></FeatureSwiper>
+          <div className="flex">
+            <div className="flex-1 flex items-center justify-center">
+              <img
+                className="w-10/12"
+                src="/src/assets/images/product-01.png"
+              />
+            </div>
+            <div className="flex-1 flex items-center justify-center">
+              <FeatureSwiper></FeatureSwiper>
+            </div>
           </div>
         </div>
       </FloorView>
-      <FloorView className="flex flex-col items-center justify-center">
+      <FloorView className="flex flex-col items-center justify-center pt-12">
         <div className="text-4xl text-gray-600 mb-12">
           <h1>特色功能</h1>
         </div>
         <div className="w-full flex items-center justify-center">
-          <FeatureSvg className="max-w-6xl w-full"></FeatureSvg>
+          <FeatureSvg className="max-w-5xl w-full"></FeatureSvg>
         </div>
       </FloorView>
-      <FloorView className="flex flex-col justify-center items-center bg-theme bg-opacity-10">
-        <div className="text-4xl text-gray-600 mb-12">
+      <FloorView
+        className="flex flex-col justify-center items-center"
+        color="#F1F2F6"
+      >
+        <div className="text-4xl text-gray-600 my-12">
           <h1>分布式、全流程、一体化解决方案</h1>
         </div>
         <ServiceCards></ServiceCards>
       </FloorView>
-      <FloorView className="flex flex-col items-center justify-center">
+      <FloorView className="flex flex-col justify-center items-center">
         <div className="text-4xl text-gray-600 mb-12">
           <h1>方案优势</h1>
         </div>
@@ -140,17 +145,17 @@ const Index = (): JSX.Element => {
           </div>
         </div>
       </FloorView>
-      <FloorView className="flex flex-col items-center justify-center">
+      <FloorView className="flex flex-col justify-center items-center">
         <div className="text-4xl text-gray-600 mb-12">
           <h1>案例展示</h1>
         </div>
         {/* <CaseMap></CaseMap> */}
       </FloorView>
-      <FloorView className="bg-theme bg-opacity-10">
+      <FloorView color="#F1F2F6">
         <LicenseGallery></LicenseGallery>
       </FloorView>
       <FloorView
-        image="/src/assets/images/01.jpg"
+        image="/src/assets/images/03.jpg"
         className="flex justify-center items-center"
       >
         <img

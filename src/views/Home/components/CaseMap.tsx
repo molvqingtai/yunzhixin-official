@@ -1,19 +1,20 @@
 import React, { useEffect } from 'react'
 import { Scene } from '@antv/l7'
 import { CityLayer } from '@antv/l7-district'
-import { Mapbox } from '@antv/l7-maps'
+import { GaodeMap, Mapbox } from '@antv/l7-maps'
 
 const CaseMap = (): JSX.Element => {
   useEffect(() => {
     const scene = new Scene({
       id: 'map',
-      map: new Mapbox({
+      map: new GaodeMap({
         center: [116.2825, 39.9],
         pitch: 0,
         style: 'blank',
         zoom: 3,
         minZoom: 3,
-        maxZoom: 10
+        maxZoom: 10,
+        token: 'cfea95fe1c88b60eda40a83b1eb1ceaf'
       })
     })
     scene.on('loaded', () => {

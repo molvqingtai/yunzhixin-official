@@ -60,7 +60,7 @@ const Navigation = ({ menus }: NavigationProps): JSX.Element => {
 
   return (
     <div
-      className="bg-theme bg-opacity-30 h-14 z-50 fixed top-0 w-screen"
+      className="bg-theme bg-opacity-30 h-14 z-20 fixed top-0 w-screen"
       style={{ backdropFilter: 'blur(5px) ' }}
     >
       <div className="container mx-auto h-full flex items-center">

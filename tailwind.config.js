@@ -13,7 +13,10 @@ module.exports = {
     }
   },
   variants: {
-    extend: {}
+    extend: {
+      backgroundColor: ['active'],
+      transform: ['active']
+    }
   },
   plugins: []
 }
