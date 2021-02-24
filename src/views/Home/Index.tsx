@@ -1,53 +1,22 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import Navigation from './components/Navigation'
 import FloorView from './components/FloorView'
 import DefectSwiper from './components/DefectSwiper'
 import FeatureSwiper from './components/FeatureSwiper'
 import ServiceCards from './components/ServiceCards'
 import CaseMap from './components/CaseMap'
-import FloorImage1 from '../../assets/images/01.jpg'
-import FloorImage2 from '../../assets/images/02.jpg'
-import FloorImage3 from '../../assets/images/03.jpg'
-import FileImage from '../../assets/images/file.png'
-import Product1 from '../../assets/images/product-01.png'
-import Logo2 from '../../assets/images/logo-02.png'
+import LicenseGallery from './components/LicenseGallery'
 
-import { ReactComponent as FeatureSvg } from '../../assets/images/feature.svg'
-import { ReactComponent as AdvantageSvg } from '../../assets/images/advantage.svg'
-
-import useImport from '../../hooks/useImport'
+import { ReactComponent as FeatureSvg } from '/src/assets/images/feature.svg'
+import { ReactComponent as AdvantageSvg } from '/src/assets/images/advantage.svg'
 
 const Index = (): JSX.Element => {
-  const patentImages = useImport(
-    [...Array(6)].map(
-      (_, index) => `../../assets/images/patent/patent-0${index + 1}.jpg`
-    )
-  )
-  console.log(patentImages)
-
-  useEffect(() => {
-    Promise.all(
-      [...Array(6)].map(async (_, index) => {
-        const Module = await import(
-          `../../assets/images/patent/patent-0${index}.jpg`
-        )
-        console.log(Module)
-
-        return Module.default
-      })
-    )
-      .then((res) => setPatentImages(res))
-      .catch((err) => {
-        console.log(err.message)
-      })
-  }, [])
-
   return (
     <div className="w-screen min-h-screen flex flex-col">
       <Navigation menus={['我们的产品', '客户案例', '关于我们']}></Navigation>
-      <FloorView image={FloorImage1}></FloorView>
+      <FloorView image="/src/assets/images/01.jpg"></FloorView>
       <FloorView
-        image={FloorImage2}
+        image="/src/assets/images/01.jpg"
         className="flex justify-center items-center"
       >
         <div className="max-w-3xl w-full text-white">
@@ -96,7 +65,7 @@ const Index = (): JSX.Element => {
         </div>
         <div className="w-full flex-1 flex">
           <div className="flex-1 flex items-center justify-end">
-            <img className="w-8/12" src={FileImage} />
+            <img className="w-8/12" src="/src/assets/images/file.png" />
           </div>
           <div className="text-white flex-1 flex justify-center items-center">
             <div className="flex flex-col items-baseline">
@@ -135,7 +104,7 @@ const Index = (): JSX.Element => {
         </div>
         <div className="flex">
           <div className="flex-1 flex items-center justify-center">
-            <img className="w-10/12" src={Product1} />
+            <img className="w-10/12" src="/src/assets/images/product-01.png" />
           </div>
           <div className="flex-1 flex items-center justify-center">
             <FeatureSwiper></FeatureSwiper>
@@ -175,18 +144,20 @@ const Index = (): JSX.Element => {
         <div className="text-4xl text-gray-600 mb-12">
           <h1>案例展示</h1>
         </div>
-        <CaseMap></CaseMap>
+        {/* <CaseMap></CaseMap> */}
       </FloorView>
-      <FloorView>
-        <div className="grid grid-cols-6 gap-4">
-          <img src={patentImages[0]} alt="" />
-        </div>
+      <FloorView className="bg-theme bg-opacity-10">
+        <LicenseGallery></LicenseGallery>
       </FloorView>
       <FloorView
-        image={FloorImage3}
+        image="/src/assets/images/01.jpg"
         className="flex justify-center items-center"
       >
-        <img className="w-10/12" src={Logo2} alt="logo" />
+        <img
+          className="w-10/12"
+          src="/src/assets/images/logo-02.png"
+          alt="logo"
+        />
       </FloorView>
     </div>
   )

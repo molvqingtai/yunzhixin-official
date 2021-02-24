@@ -2,7 +2,7 @@ import React from 'react'
 import SwiperCore, { Autoplay } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/swiper.min.css'
-import BanIcon from '../../../assets/images/ban-icon.png'
+import BanIcon from '/src/assets/images/ban-icon.png'
 
 SwiperCore.use([Autoplay])
 

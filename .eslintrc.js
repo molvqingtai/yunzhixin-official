@@ -31,6 +31,7 @@ module.exports = {
   rules: {
     'prettier/prettier': 'error',
     '@typescript-eslint/no-non-null-assertion': 'off',
-    'no-void': ['error', { allowAsStatement: true }]
+    'no-void': ['error', { allowAsStatement: true }],
+    'import/no-absolute-path': ['error', { esmodule: false }]
   }
 }
