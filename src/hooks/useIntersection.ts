@@ -17,7 +17,9 @@ const useIntersection = (
       return () => observer.disconnect()
     }
     // TODO Optimize repeated render
-  }, [ref])
+  }, [ref.current])
+  console.log('ref', ref.current)
+
   return entry
 }
 
