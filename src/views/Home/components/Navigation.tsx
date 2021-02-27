@@ -43,14 +43,22 @@ ShadowButton.displayName = 'ShadowButton'
 
 interface NavigationProps extends HTMLAttributes<HTMLDivElement> {
   menus: string[]
-  index?: number
+  activeIndex?: number
+  onToggle?: (activeIndex: number) => void
 }
 
-const Navigation = ({ menus, index = 0 }: NavigationProps): JSX.Element => {
-  const [activeButtonIndex, setActiveButtonIndex] = useState(index)
+const Navigation = ({
+  menus,
+  activeIndex = 0,
+  onToggle
+}: NavigationProps): JSX.Element => {
+  const [activeButtonIndex, setActiveButtonIndex] = useState(activeIndex)
   const [activeButtonRect, setActiveButtonRect] = useState({})
   const buttonRefs = useRef<HTMLButtonElement[]>([])
-  const handleClick = (index: number): void => setActiveButtonIndex(index)
+  const handleClick = (index: number): void => {
+    setActiveButtonIndex(index)
+    onToggle?.(index)
+  }
 
   useEffect(() => {
     const rect = buttonRefs.current
@@ -58,6 +66,8 @@ const Navigation = ({ menus, index = 0 }: NavigationProps): JSX.Element => {
       .getBoundingClientRect()
     setActiveButtonRect(rect)
   }, [activeButtonIndex])
+
+  useEffect(() => setActiveButtonIndex(activeIndex), [activeIndex])
 
   return (
     <div
@@ -73,8 +83,8 @@ const Navigation = ({ menus, index = 0 }: NavigationProps): JSX.Element => {
             <ShadowButton rect={activeButtonRect as ClientRect}></ShadowButton>
             {menus.map((text, index) => (
               <Button
-                ref={(ref: HTMLButtonElement) =>
-                  (buttonRefs.current[index] = ref)
+                ref={(element: HTMLButtonElement) =>
+                  (buttonRefs.current[index] = element)
                 }
                 onClick={() => handleClick(index)}
                 key={index}

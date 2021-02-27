@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { RefObject, useRef, useState } from 'react'
 import Navigation from './components/Navigation'
 import FloorView from './components/FloorView'
 import DefectSwiper from './components/DefectSwiper'
@@ -11,23 +11,39 @@ import { ReactComponent as FeatureSvg } from '/src/assets/images/feature.svg'
 import { ReactComponent as AdvantageSvg } from '/src/assets/images/advantage.svg'
 
 const Index = (): JSX.Element => {
-  const [inViewportFloorViewId, setInViewportFloorViewId] = useState(0)
+  // const [
+  //   floorViewRef,
+  //   setFloorViewRef
+  // ] = useState<RefObject<HTMLDivElement> | null>(null)
 
+  const floorViewRefs = useRef<{ [key: string]: HTMLDivElement }>({})
+
+  const [menuActiveIndex, setMenuActiveIndex] = useState(0)
+
+  const handleToggleActiveIndex = (id: number): void => {
+    setMenuActiveIndex(id)
+    floorViewRefs.current[id]?.scrollIntoView?.({
+      // behavior: 'smooth'
+    })
+  }
   const handleInViewport = (id: number): void => {
-    console.log('handleInViewport')
-    setInViewportFloorViewId(id)
+    console.log('id', id)
+    setMenuActiveIndex(id)
   }
   return (
     <div className="w-screen min-h-screen flex flex-col">
-      <div className="w-screen h-screen"></div>
-      {/* <Navigation menus={['我们的产品', '客户案例', '关于我们']}></Navigation> */}
+      <Navigation
+        activeIndex={menuActiveIndex}
+        menus={['我们的产品', '特色功能', '解决方案', '客户案例', '关于我们']}
+        onToggle={handleToggleActiveIndex}
+      ></Navigation>
       <FloorView
+        ref={(element: HTMLDivElement) => (floorViewRefs.current[0] = element)}
         onInViewport={() => handleInViewport(0)}
         image="/src/assets/images/01.jpg"
       ></FloorView>
-      <div className="w-screen h-screen"></div>
 
-      {/* <FloorView image="/src/assets/images/02.jpg" className="flex">
+      <FloorView image="/src/assets/images/02.jpg" className="flex">
         <div className="flex flex-col justify-center items-center text-white m-auto">
           <div className="w-full max-w-3xl flex justify-between mb-12 items-center text-4xl">
             <h1>成都制造</h1>
@@ -61,11 +77,10 @@ const Index = (): JSX.Element => {
             </p>
           </div>
         </div>
-      </FloorView> */}
+      </FloorView>
 
-      {/*
       <FloorView color="#7F1D1D" className="flex">
-        <div className="w-full flex flex-col items-center justify-around py-12">
+        <div className="w-full flex flex-col items-center justify-around py-20">
           <div className="mb-10">
             <h1 className="text-white text-4xl">
               餐厨垃圾现有处理方式存在 <strong className="text-5xl">6</strong>
@@ -104,15 +119,15 @@ const Index = (): JSX.Element => {
         </div>
       </FloorView>
       <FloorView className="flex">
-        <div className="flex flex-col justify-center items-center py-12">
+        <div className="flex flex-col justify-center items-center py-20">
           <div className="max-w-3xl w-full flex justify-between items-center text-4xl mb-20">
-            <h1 className="text-gray-600">成都制造</h1>
+            <h1 className="text-gray-600">科学选址</h1>
             <span className="h-8 w-1 bg-gray-600"></span>
-            <h1 className="text-gray-600">专利产权</h1>
+            <h1 className="text-gray-600">就地处置</h1>
             <span className="h-8 w-1 bg-gray-600"></span>
-            <h1 className="text-gray-600">高端服务</h1>
+            <h1 className="text-gray-600">分布设点</h1>
             <span className="h-8 w-1 bg-gray-600"></span>
-            <h1 className="text-gray-600">性价比高</h1>
+            <h1 className="text-gray-600">一体服务</h1>
           </div>
           <div className="flex">
             <div className="flex-1 flex items-center justify-center">
@@ -124,7 +139,11 @@ const Index = (): JSX.Element => {
           </div>
         </div>
       </FloorView>
-      <FloorView className="flex flex-col items-center justify-center py-12">
+      <FloorView
+        ref={(element: HTMLDivElement) => (floorViewRefs.current[1] = element)}
+        onInViewport={() => handleInViewport(1)}
+        className="flex flex-col items-center justify-center py-20"
+      >
         <div className="text-4xl text-gray-600 mb-12">
           <h1>特色功能</h1>
         </div>
@@ -133,7 +152,9 @@ const Index = (): JSX.Element => {
         </div>
       </FloorView>
       <FloorView
-        className="flex flex-col justify-center items-center py-12"
+        onInViewport={() => handleInViewport(2)}
+        ref={(element: HTMLDivElement) => (floorViewRefs.current[2] = element)}
+        className="flex flex-col justify-center items-center py-20"
         color="#F1F2F6"
       >
         <div className="text-4xl text-gray-600 mb-20">
@@ -141,7 +162,7 @@ const Index = (): JSX.Element => {
         </div>
         <ServiceCards></ServiceCards>
       </FloorView>
-      <FloorView className="flex flex-col justify-center items-center py-12">
+      <FloorView className="flex flex-col justify-center items-center py-20">
         <div className="text-4xl text-gray-600 mb-20">
           <h1>方案优势</h1>
         </div>
@@ -177,7 +198,6 @@ const Index = (): JSX.Element => {
           alt="logo"
         />
       </FloorView>
-    */}
     </div>
   )
 }
