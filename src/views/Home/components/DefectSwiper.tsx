@@ -17,7 +17,7 @@ const DefectSwiper = (): JSX.Element => {
   ]
 
   return (
-    <div className="w-8/12 bg-white shadow-md p-10 rounded-xl relative overflow-hidden">
+    <div className="w-10/12 bg-white shadow-md p-10 rounded-xl relative overflow-hidden">
       <div
         className="absolute z-10 top-0 left-0 w-full h-full flex justify-center items-center"
         style={{

@@ -7,7 +7,7 @@ interface CardProps {
   index: number
 }
 const Card = ({ title, color, desc, index }: CardProps): JSX.Element => (
-  <div className="flex-1 relative rounded-2xl shadow-xl px-4 pt-20 pb-4 mx-2 bg-white">
+  <div className="flex-1 relative rounded-2xl shadow-xl px-6 pt-20 pb-6 bg-white">
     <div
       className="flex justify-around text-white z-10 text-center py-2 rounded-r-3xl absolute left-0 top-6 px-3"
       style={{ backgroundColor: color }}
@@ -21,7 +21,7 @@ const Card = ({ title, color, desc, index }: CardProps): JSX.Element => (
       <h1 className="ml-2">{title}</h1>
     </div>
     <div>
-      <p className="text-xs text-gray-500" style={{ textIndent: '2em' }}>
+      <p className="text-gray-500" style={{ textIndent: '2em' }}>
         {desc}
       </p>
     </div>
@@ -78,7 +78,7 @@ const ServiceCards = (): JSX.Element => {
     }
   ]
   return (
-    <div className="flex justify-center w-full">
+    <div className="grid grid-cols-4 gap-20">
       {cardList.map((item, index) => (
         <Card key={index} index={index} {...item}></Card>
       ))}

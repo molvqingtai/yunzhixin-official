@@ -43,10 +43,11 @@ ShadowButton.displayName = 'ShadowButton'
 
 interface NavigationProps extends HTMLAttributes<HTMLDivElement> {
   menus: string[]
+  index?: number
 }
 
-const Navigation = ({ menus }: NavigationProps): JSX.Element => {
-  const [activeButtonIndex, setActiveButtonIndex] = useState(0)
+const Navigation = ({ menus, index = 0 }: NavigationProps): JSX.Element => {
+  const [activeButtonIndex, setActiveButtonIndex] = useState(index)
   const [activeButtonRect, setActiveButtonRect] = useState({})
   const buttonRefs = useRef<HTMLButtonElement[]>([])
   const handleClick = (index: number): void => setActiveButtonIndex(index)

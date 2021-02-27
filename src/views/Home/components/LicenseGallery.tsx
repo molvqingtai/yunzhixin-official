@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, MouseEvent } from 'react'
 import Modal from '/src/components/Modal'
 
 const patentModules = import.meta.globEager('/src/assets/images/patent/*.jpg')
@@ -7,42 +7,57 @@ const copyrightModules = import.meta.globEager(
   '/src/assets/images/copyright/*.jpg'
 )
 
+interface LicenseCardProps {
+  src: string
+  onClick?: (event: MouseEvent<HTMLDivElement>) => void
+}
+const LicenseCard = ({ src, onClick }: LicenseCardProps): JSX.Element => {
+  return (
+    <div
+      className="shadow-lg rounded-sm overflow-hidden cursor-pointer"
+      onClick={onClick}
+    >
+      <img src={src} />
+    </div>
+  )
+}
+
 const LicenseGallery = (): JSX.Element => {
-  const [modalOpen, setModalOpen] = useState(true)
+  const [modalOpen, setModalOpen] = useState(false)
+  const [modalImage, setModalImage] = useState('')
+  const handleModalClose = (): void => setModalOpen(false)
+  const handleLicenseCardClick = (src: string): void => {
+    setModalImage(src)
+    setModalOpen(true)
+  }
+
   return (
     <div>
       <div className="grid grid-cols-5 gap-20 my-10">
         {Object.keys(reportModules).map((src) => {
           return (
-            <div
+            <LicenseCard
               key={src}
-              className="shadow-lg rounded-sm overflow-hidden cursor-pointer"
-            >
-              <img src={src} />
-            </div>
+              src={src}
+              onClick={() => handleLicenseCardClick(src)}
+            ></LicenseCard>
           )
         })}
       </div>
       <div className="grid grid-cols-6 gap-20 my-10">
         {Object.keys(patentModules).map((src) => {
-          return (
-            <div key={src} className="shadow-lg rounded-sm overflow-hidden">
-              <img src={src} className="w-full" />
-            </div>
-          )
+          return <LicenseCard key={src} src={src}></LicenseCard>
         })}
       </div>
       <div className="grid grid-cols-10 gap-10 my-10">
         {Object.keys(copyrightModules).map((src) => {
-          return (
-            <div key={src} className="shadow-lg rounded-sm overflow-hidden">
-              <img src={src} />
-            </div>
-          )
+          return <LicenseCard key={src} src={src}></LicenseCard>
         })}
       </div>
-      <Modal open={modalOpen} onClose={() => setModalOpen(false)}>
-        <h1>modal</h1>
+      <Modal open={modalOpen} onClose={handleModalClose}>
+        <div>
+          <img src={modalImage} />
+        </div>
       </Modal>
     </div>
   )
