@@ -6,7 +6,7 @@ import React, {
   useEffect
 } from 'react'
 
-import { ReactComponent as Logo } from '/src/assets/images/logo.svg'
+import { Logo } from '../../../assets/images/index'
 
 interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   children: string

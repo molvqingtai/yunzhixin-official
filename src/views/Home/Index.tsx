@@ -4,11 +4,20 @@ import FloorView from './components/FloorView'
 import DefectSwiper from './components/DefectSwiper'
 import FeatureSwiper from './components/FeatureSwiper'
 import ServiceCards from './components/ServiceCards'
-// import CaseMap from './components/CaseMap'
 import LicenseGallery from './components/LicenseGallery'
+// import CaseMap from './components/CaseMap'
 
-import { ReactComponent as FeatureSvg } from '/src/assets/images/feature.svg'
-import { ReactComponent as AdvantageSvg } from '/src/assets/images/advantage.svg'
+import {
+  Logo2,
+  Floor1,
+  Floor2,
+  Floor3,
+  FeatureSvg,
+  AdvantageSvg,
+  FileIcon,
+  Product1,
+  CaseImages
+} from '../../assets/images/index'
 
 // import useDebounce from '/src/hooks/useDebounce'
 
@@ -43,10 +52,10 @@ const Index = (): JSX.Element => {
       <FloorView
         ref={(element: HTMLDivElement) => (floorViewRefs.current[0] = element)}
         onInViewport={() => handleInViewport(0)}
-        image="/src/assets/images/01.jpg"
+        image={Floor1}
       ></FloorView>
 
-      <FloorView image="/src/assets/images/02.jpg" className="flex">
+      <FloorView image={Floor2} className="flex">
         <div className="flex flex-col justify-center items-center text-white m-auto">
           <div className="w-full max-w-3xl flex justify-between mb-12 items-center text-4xl">
             <h1>成都制造</h1>
@@ -57,26 +66,23 @@ const Index = (): JSX.Element => {
             <span className="h-8 w-1 bg-white"></span>
             <h1>性价比高</h1>
           </div>
-          <div>
-            <p className="my-4">
+          <div className="px-10">
+            <p className="my-4" style={{ textIndent: '2em' }}>
               中国，作为世界第一人口大国，伴随着时代发展和经济进步，全国城镇人口已高达
               8.3 亿。 在餐饮行业高速发展的同时，2019 年全国餐厨垃圾生产量已突破
               1.2 亿吨，其中，成都市每天产生餐厨垃圾 6000 亿吨。
             </p>
-            <p className="my-4">
-              中国，作为世界第一人口大国，伴随着时代发展和经济进步，全国城镇人口已高达
-              8.3 亿。 在餐饮行业高速发展的同时，2019 年全国餐厨垃圾生产量已突破
-              1.2 亿吨，其中，成都市每天产生餐厨垃圾 6000 亿吨。
+            <p className="my-4" style={{ textIndent: '2em' }}>
+              餐厨垃圾正在成为城市病，对环境的污染日益严重。如何做好垃圾分类
+              尤其是厨余垃圾的分类和处置工作，运用科技手段，减少和消除它对人们生
+              活和环境的影响，不仅是全社会亟需解决的难题,也是目前各级党委政府正
+              在大力推动的一-项重要工作。
             </p>
-            <p className="my-4">
-              中国，作为世界第一人口大国，伴随着时代发展和经济进步，全国城镇人口已高达
-              8.3 亿。 在餐饮行业高速发展的同时，2019 年全国餐厨垃圾生产量已突破
-              1.2 亿吨，其中，成都市每天产生餐厨垃圾 6000 亿吨。
-            </p>
-            <p className="my-4">
-              中国，作为世界第一人口大国，伴随着时代发展和经济进步，全国城镇人口已高达
-              8.3 亿。 在餐饮行业高速发展的同时，2019 年全国餐厨垃圾生产量已突破
-              1.2 亿吨，其中，成都市每天产生餐厨垃圾 6000 亿吨。
+            <p className="my-4" style={{ textIndent: '2em' }}>
+              习近平总书记多次就垃圾分类和处置工作作出指示，伴随《“十三五”》
+              全国城镇生活垃圾无害化处理设施建设规划》文件的出台，国务院和各省市
+              相继出台了各类关于垃圾分类及处置的相关政策和法规，为餐厨垃圾处理产
+              业的健康发展奠定了良好的政策基础，也提供了全新的发展机遇。
             </p>
           </div>
         </div>
@@ -93,7 +99,7 @@ const Index = (): JSX.Element => {
           <DefectSwiper></DefectSwiper>
           <div className="w-full flex">
             <div className="flex items-center justify-center flex-1">
-              <img className="w-full" src="/src/assets/images/file.png" />
+              <img className="w-full" src={FileIcon} />
             </div>
             <div className="text-white flex-1 flex justify-center items-center">
               <div className="flex flex-col items-baseline">
@@ -105,13 +111,15 @@ const Index = (): JSX.Element => {
                 </div>
                 <div className="flex flex-col items-baseline"></div>
                 <a
-                  href="#"
+                  href="http://gk.chengdu.gov.cn/govInfo/detail.action?id=124559&tn=6"
+                  target="http://gk.chengdu.gov.cn/govInfo/detail.action?id=124559&tn=6"
                   className="px-2 py-1 bg-white text-red-900 rounded-md mb-3 hover:underline"
                 >
                   《成都市生活垃圾管理规范》
                 </a>
                 <a
-                  href="#"
+                  href="http://gk.chengdu.gov.cn/govInfoPub/detail.action?id=98402&tn=6"
+                  target="http://gk.chengdu.gov.cn/govInfoPub/detail.action?id=98402&tn=6"
                   className="px-2 py-1 bg-white text-red-900 rounded-md hover:underline"
                 >
                   《成都市厨余垃圾分布式处理工作方案》
@@ -134,7 +142,7 @@ const Index = (): JSX.Element => {
           </div>
           <div className="flex">
             <div className="flex-1 flex items-center justify-center">
-              <img className="w-full" src="/src/assets/images/product-01.png" />
+              <img className="w-full" src={Product1} />
             </div>
             <div className="flex-1 flex items-center justify-center">
               <FeatureSwiper></FeatureSwiper>
@@ -194,33 +202,21 @@ const Index = (): JSX.Element => {
         <div className="flex items-center">
           <div className="flex-1 flex flex-col items-center h-64 mx-4 rounded-md shadow-lg overflow-hidden">
             <div className="flex-1 overflow-hidden">
-              <img
-                className="h-full object-cover w-full"
-                src="/src/assets/images/case/case-01.jpg"
-                alt=""
-              />
+              <img className="h-full object-cover w-full" src={CaseImages[0]} />
             </div>
 
             <h4 className="my-4 text-gray-700">金堂恒大御景半岛</h4>
           </div>
           <div className="flex-1 flex flex-col items-center h-64 mx-4 rounded-md shadow-lg overflow-hidden">
             <div className="flex-1 overflow-hidden">
-              <img
-                className="h-full object-cover w-full"
-                src="/src/assets/images/case/case-02.jpg"
-                alt=""
-              />
+              <img className="h-full object-cover w-full" src={CaseImages[1]} />
             </div>
             <h4 className="my-4 text-gray-700">双流区电子信息职业学校</h4>
           </div>
 
           <div className="flex-1 flex flex-col items-center h-64 mx-4 rounded-md shadow-lg overflow-hidden">
             <div className="flex-1 overflow-hidden">
-              <img
-                className="h-full object-cover w-full"
-                src="/src/assets/images/case/case-03.jpg"
-                alt=""
-              />
+              <img className="h-full object-cover w-full" src={CaseImages[2]} />
             </div>
             <h4 className="my-4 text-gray-700">郫都区农科村</h4>
           </div>
@@ -232,14 +228,10 @@ const Index = (): JSX.Element => {
       <FloorView
         onInViewport={() => handleInViewport(4)}
         ref={(element: HTMLDivElement) => (floorViewRefs.current[4] = element)}
-        image="/src/assets/images/03.jpg"
+        image={Floor3}
         className="flex justify-center items-center"
       >
-        <img
-          className="w-10/12"
-          src="/src/assets/images/logo-02.png"
-          alt="logo"
-        />
+        <img className="w-10/12" src={Logo2} alt="logo" />
       </FloorView>
     </div>
   )

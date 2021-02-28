@@ -1,11 +1,10 @@
 import React, { useState, MouseEvent } from 'react'
 import Modal from '/src/components/Modal'
-
-const patentModules = import.meta.globEager('/src/assets/images/patent/*.jpg')
-const reportModules = import.meta.globEager('/src/assets/images/report/*.jpg')
-const copyrightModules = import.meta.globEager(
-  '/src/assets/images/copyright/*.jpg'
-)
+import {
+  PatentImages,
+  ReportImages,
+  CopyrightImages
+} from '../../../assets/images/index'
 
 interface LicenseCardProps {
   src: string
@@ -14,10 +13,10 @@ interface LicenseCardProps {
 const LicenseCard = ({ src, onClick }: LicenseCardProps): JSX.Element => {
   return (
     <div
-      className="shadow-lg rounded-sm overflow-hidden cursor-pointer"
+      className="shadow-lg rounded-sm overflow-hidden cursor-pointer transition ease-out duration-700 transform hover:-translate-y-3"
       onClick={onClick}
     >
-      <img src={src} />
+      <img src={src} className="w-full" />
     </div>
   )
 }
@@ -33,8 +32,8 @@ const LicenseGallery = (): JSX.Element => {
 
   return (
     <div>
-      <div className="grid grid-cols-5 gap-20 my-10">
-        {Object.keys(reportModules).map((src) => {
+      <div className="grid grid-cols-6 gap-20 my-10">
+        {PatentImages.map((src) => {
           return (
             <LicenseCard
               key={src}
@@ -45,7 +44,7 @@ const LicenseGallery = (): JSX.Element => {
         })}
       </div>
       <div className="grid grid-cols-6 gap-20 my-10">
-        {Object.keys(patentModules).map((src) => {
+        {ReportImages.map((src) => {
           return (
             <LicenseCard
               key={src}
@@ -56,7 +55,7 @@ const LicenseGallery = (): JSX.Element => {
         })}
       </div>
       <div className="grid grid-cols-10 gap-10 my-10">
-        {Object.keys(copyrightModules).map((src) => {
+        {CopyrightImages.map((src) => {
           return (
             <LicenseCard
               key={src}
