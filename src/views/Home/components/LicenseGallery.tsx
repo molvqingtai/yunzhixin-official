@@ -46,12 +46,24 @@ const LicenseGallery = (): JSX.Element => {
       </div>
       <div className="grid grid-cols-6 gap-20 my-10">
         {Object.keys(patentModules).map((src) => {
-          return <LicenseCard key={src} src={src}></LicenseCard>
+          return (
+            <LicenseCard
+              key={src}
+              src={src}
+              onClick={() => handleLicenseCardClick(src)}
+            ></LicenseCard>
+          )
         })}
       </div>
       <div className="grid grid-cols-10 gap-10 my-10">
         {Object.keys(copyrightModules).map((src) => {
-          return <LicenseCard key={src} src={src}></LicenseCard>
+          return (
+            <LicenseCard
+              key={src}
+              src={src}
+              onClick={() => handleLicenseCardClick(src)}
+            ></LicenseCard>
+          )
         })}
       </div>
       <Modal open={modalOpen} onClose={handleModalClose}>

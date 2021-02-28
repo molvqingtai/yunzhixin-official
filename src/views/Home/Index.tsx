@@ -1,23 +1,19 @@
-import React, { RefObject, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import Navigation from './components/Navigation'
 import FloorView from './components/FloorView'
 import DefectSwiper from './components/DefectSwiper'
 import FeatureSwiper from './components/FeatureSwiper'
 import ServiceCards from './components/ServiceCards'
-import CaseMap from './components/CaseMap'
+// import CaseMap from './components/CaseMap'
 import LicenseGallery from './components/LicenseGallery'
 
 import { ReactComponent as FeatureSvg } from '/src/assets/images/feature.svg'
 import { ReactComponent as AdvantageSvg } from '/src/assets/images/advantage.svg'
 
+// import useDebounce from '/src/hooks/useDebounce'
+
 const Index = (): JSX.Element => {
-  // const [
-  //   floorViewRef,
-  //   setFloorViewRef
-  // ] = useState<RefObject<HTMLDivElement> | null>(null)
-
   const floorViewRefs = useRef<{ [key: string]: HTMLDivElement }>({})
-
   const [menuActiveIndex, setMenuActiveIndex] = useState(0)
 
   const handleToggleActiveIndex = (id: number): void => {
@@ -26,10 +22,17 @@ const Index = (): JSX.Element => {
       // behavior: 'smooth'
     })
   }
+
   const handleInViewport = (id: number): void => {
     console.log('id', id)
     setMenuActiveIndex(id)
   }
+
+  // const handleInViewport = useDebounce((id: number): void => {
+  //   console.log('id', id)
+  //   setMenuActiveIndex(id)
+  // }, 500)
+
   return (
     <div className="w-screen min-h-screen flex flex-col">
       <Navigation
@@ -180,15 +183,55 @@ const Index = (): JSX.Element => {
           </div>
         </div>
       </FloorView>
-      <FloorView className="flex flex-col justify-center items-center">
+      <FloorView
+        onInViewport={() => handleInViewport(3)}
+        ref={(element: HTMLDivElement) => (floorViewRefs.current[3] = element)}
+        className="flex flex-col justify-center items-center py-20"
+      >
         <div className="text-4xl text-gray-600 mb-12">
           <h1>案例展示</h1>
+        </div>
+        <div className="flex items-center">
+          <div className="flex-1 flex flex-col items-center h-64 mx-4 rounded-md shadow-lg overflow-hidden">
+            <div className="flex-1 overflow-hidden">
+              <img
+                className="h-full object-cover w-full"
+                src="/src/assets/images/case/case-01.jpg"
+                alt=""
+              />
+            </div>
+
+            <h4 className="my-4 text-gray-700">金堂恒大御景半岛</h4>
+          </div>
+          <div className="flex-1 flex flex-col items-center h-64 mx-4 rounded-md shadow-lg overflow-hidden">
+            <div className="flex-1 overflow-hidden">
+              <img
+                className="h-full object-cover w-full"
+                src="/src/assets/images/case/case-02.jpg"
+                alt=""
+              />
+            </div>
+            <h4 className="my-4 text-gray-700">双流区电子信息职业学校</h4>
+          </div>
+
+          <div className="flex-1 flex flex-col items-center h-64 mx-4 rounded-md shadow-lg overflow-hidden">
+            <div className="flex-1 overflow-hidden">
+              <img
+                className="h-full object-cover w-full"
+                src="/src/assets/images/case/case-03.jpg"
+                alt=""
+              />
+            </div>
+            <h4 className="my-4 text-gray-700">郫都区农科村</h4>
+          </div>
         </div>
       </FloorView>
       <FloorView color="#F1F2F6">
         <LicenseGallery></LicenseGallery>
       </FloorView>
       <FloorView
+        onInViewport={() => handleInViewport(4)}
+        ref={(element: HTMLDivElement) => (floorViewRefs.current[4] = element)}
         image="/src/assets/images/03.jpg"
         className="flex justify-center items-center"
       >

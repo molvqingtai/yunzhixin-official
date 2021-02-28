@@ -28,6 +28,6 @@ var useIntersection = function (ref, options) {
   )
   console.log('ref', ref)
   console.log(11111, intersectionObserverEntry)
-  // return intersectionObserverEntry
+  return intersectionObserverEntry
 }
 export default useIntersection
