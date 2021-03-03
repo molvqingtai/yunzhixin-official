@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Scene } from '@antv/l7'
 import { CityLayer } from '@antv/l7-district'
-import { GaodeMap, Mapbox } from '@antv/l7-maps'
+import { GaodeMap } from '@antv/l7-maps' // Mapbox
 
 const CaseMap = (): JSX.Element => {
   useEffect(() => {

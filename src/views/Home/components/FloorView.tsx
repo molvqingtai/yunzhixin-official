@@ -5,7 +5,7 @@ import React, {
   useRef,
   useEffect
 } from 'react'
-import useIntersection from '/src/hooks/useIntersection'
+import useIntersection from '../../../hooks/useIntersection'
 
 // import { useIntersection } from 'react-use'
 interface FloorViewProps extends HTMLAttributes<HTMLDivElement> {

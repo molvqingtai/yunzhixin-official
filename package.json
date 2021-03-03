@@ -5,7 +5,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "serve": "vite preview",
-    "lint": "eslint src --ext .js,.ts,.tsx --fix"
+    "lint": "eslint . --ext .js,.ts,.tsx --fix"
   },
   "repository": {
     "type": "git",
